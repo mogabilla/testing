@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anianu.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            color: #333;
+            padding: 0 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            height: 38px;
+            border-bottom: 1.5px solid #ddd;
+            position: relative;
+            min-height: 38px;
+        }
+
+        .logo {
+            color: #ff4444;
+            font-size: 26px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 38px;
+            height: 38px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 18px;
+            flex: none;
+            height: 38px;
+            margin: 0 auto;
+            position: absolute;
+            left: 0; right: 0;
+            top: 0;
+            width: fit-content;
+            z-index: 1;
+        }
+
+        .header-icon {
+            color: #333;
+            font-size: 18px;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+            height: 38px;
+            width: 28px;
+        }
+
+        .header-icon:hover {
+            color: #4444ff;
+        }
+
+        /* Individual icon colors */
+        .header-icon .fa-envelope {
+            color: #0078d4;
+        }
+
+        .header-icon .fa-instagram {
+            color: #e4405f;
+        }
+
+        .header-icon .fa-youtube {
+            color: #ff0000;
+        }
+
+        .header-icon .fa-whatsapp {
+            color: #25d366;
+        }
+
+        .header-icon .fa-dollar-sign {
+            color: #85bb65;
+        }
+
+        .header-icon .fa-user {
+            color: #6c757d;
+        }
+
+        .header-icon:hover .fa-envelope {
+            color: #005a9e;
+        }
+
+        .header-icon:hover .fa-instagram {
+            color: #c13584;
+        }
+
+        .header-icon:hover .fa-youtube {
+            color: #cc0000;
+        }
+
+        .header-icon:hover .fa-whatsapp {
+            color: #128c7e;
+        }
+
+        .header-icon:hover .fa-dollar-sign {
+            color: #5a8f3d;
+        }
+
+        .header-icon:hover .fa-user {
+            color: #495057;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: #000;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0 5px;
+            margin: 0;
+            height: 38px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* Ad Slots */
+        .ad-slots {
+            display: flex;
+            height: 50px;
+        }
+
+        .ad-slot {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-right: 2px solid #ffffff;
+            font-size: 14px;
+        }
+
+        .ad-slot:last-child {
+            border-right: none;
+        }
+
+        .ad-slots-black {
+            background-color: #000;
+            color: #ffff00;
+        }
+
+        .ad-slots-yellow {
+            background-color: #ffff00;
+            color: #333;
+        }
+
+        .ad-slots-cyan {
+            background-color: #00ffff;
+            color: #333;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            gap: 5px;
+            padding: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        /* Grid Boxes */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            flex: 1;
+        }
+
+        .grid-box {
+            width: 100%;
+            height: 100px;
+            border: 2px solid #ff4444;
+            border-radius: 8px;
+            background-color: #ffeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            color: #ff4444;
+            font-weight: bold;
+            min-width: 90px;
+        }
+
+        /* Center Content */
+        .center-content {
+            width: 350px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 15px;
+        }
+
+        .ads-header {
+            background-color: #4444ff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .login-section {
+            padding: 20px;
+        }
+
+        .login-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            background-color: #f5f5f5;
+        }
+
+        .tab.active {
+            background-color: #22aa22;
+            color: white;
+            border-color: #22aa22;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .sign-in-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4444ff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .video-placeholder {
+            margin: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-icon {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #ff4444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background-color: #ff4444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .video-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .ads-footer {
+            background-color: #4444ff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: #fff;
+            border-top: 2px solid #ff4444;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 38px;
+            height: 48px;
+            margin-top: 0;
+        }
+
+        .footer-icon {
+            color: #333;
+            font-size: 22px;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            width: 32px;
+            transition: color 0.2s;
+        }
+
+        .footer-icon:hover {
+            color: #4444ff;
+        }
+
+        /* Individual footer icon colors */
+        .footer-icon .fa-house {
+            color: #6c757d;
+        }
+
+        .footer-icon .fa-envelope {
+            color: #0078d4;
+        }
+
+        .footer-icon .fa-instagram {
+            color: #e4405f;
+        }
+
+        .footer-icon .fa-youtube {
+            color: #ff0000;
+        }
+
+        .footer-icon .fa-whatsapp {
+            color: #25d366;
+        }
+
+        .footer-icon .fa-dollar-sign {
+            color: #85bb65;
+        }
+
+        .footer-icon .fa-user {
+            color: #6c757d;
+        }
+
+        .footer-icon:hover .fa-house {
+            color: #495057;
+        }
+
+        .footer-icon:hover .fa-envelope {
+            color: #005a9e;
+        }
+
+        .footer-icon:hover .fa-instagram {
+            color: #c13584;
+        }
+
+        .footer-icon:hover .fa-youtube {
+            color: #cc0000;
+        }
+
+        .footer-icon:hover .fa-whatsapp {
+            color: #128c7e;
+        }
+
+        .footer-icon:hover .fa-dollar-sign {
+            color: #5a8f3d;
+        }
+
+        .footer-icon:hover .fa-user {
+            color: #495057;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            /* Tablet view - PC layout but smaller */
+            .main-container {
+                max-width: 900px;
+                padding: 12px;
+                gap: 8px;
+            }
+            
+            .center-content {
+                width: 280px;
+                margin: 0 10px;
+            }
+            
+            .grid-box {
+                height: 85px;
+                min-width: 75px;
+                font-size: 11px;
+            }
+            
+            .grid-container {
+                gap: 6px;
+            }
+            
+            .login-section {
+                padding: 15px;
+            }
+            
+            .video-placeholder {
+                margin: 15px;
+                height: 100px;
+            }
+            
+            .header {
+                padding: 6px 12px;
+                height: 40px;
+            }
+            
+            .logo {
+                font-size: 16px;
+            }
+            
+            .header-icons span {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .ad-slots {
+                height: 45px;
+            }
+            
+            .ad-slot {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 1024px) and (max-height: 700px) {
+            /* Specific for 1024x600 and similar resolutions */
+            .grid-container {
+                display: none !important; /* Hide red boxes completely */
+            }
+            
+            .main-container {
+                justify-content: center;
+            }
+            
+            .center-content {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                padding: 10px;
+                gap: 0;
+            }
+            
+            .center-content {
+                width: 100%;
+                order: 1;
+                margin: 0;
+            }
+            
+            .grid-container {
+                display: none; /* Hide all red boxes on mobile */
+            }
+            
+            .header-icons {
+                display: none;
+            }
+            
+            .ad-slots {
+                height: 40px;
+            }
+            
+            .ad-slot {
+                font-size: 12px;
+            }
+            
+            .login-section {
+                padding: 20px;
+            }
+            
+            .form-input {
+                padding: 15px;
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+            
+            .sign-in-btn, .sign-up-btn {
+                padding: 15px;
+                font-size: 16px;
+                margin: 5px;
+                border-radius: 25px;
+            }
+            
+            .login-tabs {
+                margin-bottom: 30px;
+            }
+            
+            .tab {
+                padding: 12px;
+                font-size: 16px;
+            }
+            .header {
+                height: 34px;
+                min-height: 34px;
+            }
+            .logo {
+                font-size: 18px;
+                line-height: 34px;
+                height: 34px;
+            }
+            .header-icons {
+                height: 34px;
+            }
+            .header-icon {
+                font-size: 15px;
+                height: 34px;
+                width: 22px;
+            }
+            .menu-btn {
+                font-size: 22px;
+                height: 34px;
+            }
+            .footer {
+                height: 38px;
+                gap: 18px;
+            }
+            .footer-icon {
+                font-size: 16px;
+                height: 38px;
+                width: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                display: none; /* Ensure boxes stay hidden on small mobile */
+            }
+            
+            .center-content {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .login-section {
+                padding: 25px;
+            }
+            
+            .video-placeholder {
+                margin: 20px;
+                height: 120px;
+            }
+            
+            .ads-header, .ads-footer {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">Anianu.com</div>
+        <div class="header-icons">
+            <a href="#" class="header-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" class="header-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="header-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="header-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="header-icon" title="Dollar"><i class="fa-solid fa-dollar-sign"></i></a>
+            <a href="#" class="header-icon" title="User"><i class="fa-solid fa-user"></i></a>
+        </div>
+        <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <!-- Ad Slots Row 1 -->
+    <div class="ad-slots ad-slots-black">
+        <div class="ad-slot">ad1</div>
+        <div class="ad-slot">ad2</div>
+        <div class="ad-slot">ad3</div>
+        <div class="ad-slot">ad4</div>
+        <div class="ad-slot">ad5</div>
+    </div>
+
+    <!-- Ad Slots Row 2 -->
+    <div class="ad-slots ad-slots-yellow">
+        <div class="ad-slot">ad1</div>
+        <div class="ad-slot">ad2</div>
+        <div class="ad-slot">ad3</div>
+        <div class="ad-slot">ad4</div>
+        <div class="ad-slot">ad5</div>
+    </div>
+
+    <!-- Ad Slots Row 3 -->
+    <div class="ad-slots ad-slots-cyan">
+        <div class="ad-slot">Ad1</div>
+        <div class="ad-slot">ad2</div>
+        <div class="ad-slot">ad3</div>
+        <div class="ad-slot">ad4</div>
+        <div class="ad-slot">ad5</div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Grid -->
+        <div class="grid-container">
+            <div class="grid-box">png<br>to<br>gif</div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+        </div>
+
+        <!-- Center Content -->
+        <div class="center-content">
+            <div class="ads-header">Ads</div>
+            
+            <div class="login-section">
+                <h3 style="text-align: center; margin-bottom: 20px; font-size: 14px;">User login & Registration</h3>
+                
+                <div class="login-tabs">
+                    <div class="tab active" id="loginTab">Login</div>
+                    <div class="tab" id="registerTab">Registration</div>
+                </div>
+
+                <div id="loginForm">
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email address">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-input" placeholder="Password">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember password</label>
+                    </div>
+
+                    <button class="sign-in-btn" style="width:100%;">Sign In</button>
+                </div>
+
+                <div id="registerForm" style="display:none;">
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email address">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-input" placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-input" placeholder="Confirm Password">
+                    </div>
+
+                    <button class="sign-in-btn sign-up-btn" style="width:100%; background-color: #22aa22;">Sign up</button>
+                </div>
+            </div>
+
+            <div class="video-placeholder">
+                <div class="video-icon">ig</div>
+                <div class="play-button">▶</div>
+                <div class="video-text">Chocolate Video</div>
+            </div>
+
+            <div class="ads-footer">ADS</div>
+        </div>
+
+        <!-- Right Grid -->
+        <div class="grid-container">
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#" class="footer-icon"><i class="fa-solid fa-house"></i></a>
+        <a href="#" class="footer-icon"><i class="fa-solid fa-envelope"></i></a>
+        <a href="#" class="footer-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="footer-icon"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="footer-icon"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" class="footer-icon"><i class="fa-solid fa-dollar-sign"></i></a>
+        <a href="#" class="footer-icon"><i class="fa-solid fa-user"></i></a>
+    </div>
+
+    <script>
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginTab.addEventListener('click', function() {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.style.display = '';
+            registerForm.style.display = 'none';
+        });
+        registerTab.addEventListener('click', function() {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.style.display = '';
+            loginForm.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
